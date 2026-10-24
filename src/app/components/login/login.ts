@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class Login {
 
+  private authService = inject(AuthService);
+
   email=''
   password=''
 
   iniciarsesion(){
-    console.log('Registrar');
-    
+    this.authService.login(this.email, this.password);    
   }
 
 }
